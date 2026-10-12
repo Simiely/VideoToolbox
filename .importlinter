@@ -1,0 +1,34 @@
+; 架构契约：把「核心与界面解耦」这条既成事实固化成可执行的检查。
+; 运行方式（项目根目录）：
+;   $env:PYTHONPATH="src"; & "$env:LOCALAPPDATA\Python\pythoncore-3.14-64\Scripts\lint-imports.exe"
+; 说明：forbidden 契约会连带检查间接导入（官方文档明示 "Indirect imports will
+; also be checked."），因此「ui 不得【直接】导入 subprocess」这类「仅直接」约束
+; 无法在此表达，由 tools/arch_check.py 用 AST 精确检查。
+[importlinter]
+root_packages =
+    videotool
+; 需要检查 PySide6 / subprocess 这类外部模块，必须打开此项
+include_external_packages = True
+
+[importlinter:contract:core-not-depend-on-ui]
+name = core 不得依赖 ui（核心逻辑独立于界面层）
+type = forbidden
+source_modules =
+    videotool.core
+forbidden_modules =
+    videotool.ui
+
+[importlinter:contract:core-not-depend-on-qt]
+name = core 不得依赖 PySide6（核心逻辑可脱离 Qt 运行）
+type = forbidden
+source_modules =
+    videotool.core
+forbidden_modules =
+    PySide6
+
+[importlinter:contract:layers]
+name = 分层：ui 单向依赖 core
+type = layers
+layers =
+    videotool.ui
+    videotool.core

@@ -1,0 +1,10 @@
+# Python 缓存
+__pycache__/
+*.py[cod]
+
+# PyInstaller 产物与中间文件（dist/ 为本地打包产物，build/pyi_work/ 为中间目录）
+dist/
+build/pyi_work/
+
+# 工具缓存
+.import_linter_cache/
