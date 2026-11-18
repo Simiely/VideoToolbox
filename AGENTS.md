@@ -1,6 +1,6 @@
 # AGENTS.md · 项目规则
 
-> 📌 **文档基线**：2026-11-18 首次补齐四件套 + 接入 repo-kit 机器层（`monorepo`，kit 2.8.0 / spec 2.1.3）
+> 📌 **文档基线**：2026-11-18（commit `41c9b5b`）首次补齐四件套 + 接入 repo-kit 机器层（`monorepo`，kit 2.8.0 / spec 2.1.3）
 > **更新文档/代码后，请更新此行**（日期 + 新 commit hash），并在 CHANGELOG 追加
 
 ## 技术栈
