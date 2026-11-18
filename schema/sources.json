@@ -1,0 +1,28 @@
+{
+  "_comment": "真源映射：格式矩阵（specs.py 的类名与规格字段）被 DEVELOPMENT.md 引用时必须存在。界面层内部实现不映射——改版频繁，写进文档只会制造漂移。allowlist 放的是跨模块稳定入口（runner/naming），不在 specs.py 里。",
+  "code": [
+    {
+      "truth": "src/videotool/core/specs.py",
+      "patterns": [
+        "^class ([A-Za-z_][A-Za-z0-9_]*)",
+        "^\\s{4}([a-z][a-z0-9_]*):",
+        "^\\s{4}\"([a-z0-9_]+)\":"
+      ],
+      "docs": [
+        "DEVELOPMENT.md"
+      ],
+      "token_pattern": "^[a-z][a-z0-9]*(?:_[a-z0-9]+)+$",
+      "allowlist": [
+        "run_plan",
+        "build_output_path",
+        "hw_failed",
+        "arch_check"
+      ],
+      "co_change": true,
+      "co_change_docs": [
+        "DEVELOPMENT.md"
+      ]
+    }
+  ],
+  "knowledge": []
+}
